@@ -1,0 +1,20 @@
+package com.bank;
+
+import com.bank.messaging.TestProducer;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+@Component
+public class teste implements CommandLineRunner {
+
+    private final TestProducer producer;
+
+    public Runner(TestProducer producer) {
+        this.producer = producer;
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        producer.sendMessage("Olá CloudAMQP!");
+    }
+}

@@ -1,0 +1,23 @@
+package com.bank;
+
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
+
+public class RabbitMQTestConnection {
+    public static void main(String[] args) {
+        try {
+            ConnectionFactory factory = new ConnectionFactory();
+            factory.setHost("gorilla.lmq.cloudamqp.com");
+            factory.setPort(5671); // porta TLS
+            factory.setUsername("abdchoir");
+            factory.setPassword("D5Kn7fau_uKtP64c4U2IMEa7PZ2owtKX");
+            factory.setVirtualHost("abdchoir");
+            factory.useSslProtocol(); // SSL
+            Connection connection = factory.newConnection();
+            System.out.println("✅ Conexao OK!");
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

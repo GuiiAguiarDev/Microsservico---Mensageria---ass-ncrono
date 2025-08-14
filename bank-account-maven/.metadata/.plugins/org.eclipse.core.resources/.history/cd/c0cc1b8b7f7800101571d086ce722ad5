@@ -1,0 +1,15 @@
+package com.bank.config;
+
+import java.util.Queue;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class RabbitMQConfig {
+	public static final String QUEUE_CURRENT_ACCOUNT = "current-account-queue";
+	
+	@Bean
+	public Queue(QUEUE_CURRENT_ACCOUNT, true);
+
+}

@@ -1,0 +1,61 @@
+package com.bank.controller;
+
+import java.math.BigDecimal;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.bank.dto.ClientCurrentAccountRequestDTO;
+import com.bank.dto.ClientCurrentAccountResponseDTO;
+import com.bank.dto.CurrentAccountTransactionRequest;
+
+import com.bank.model.CurrentAccount;
+import com.bank.service.CurrentAccountService;
+
+@RestController
+@RequestMapping("/current-account")
+public class CurrentAccountController {
+
+	private final CurrentAccountService currentAccountService;
+
+	public CurrentAccountController(CurrentAccountService currentAccountService) {
+		this.currentAccountService = currentAccountService;
+
+	}
+
+	@PostMapping("/createCurrentAccount")
+	public ResponseEntity<CurrentAccount> createAccount(@RequestBody ClientCurrentAccountRequestDTO request) {
+		CurrentAccount account = currentAccountService.createCurrentAccount(request);
+		return ResponseEntity.status(HttpStatus.CREATED).body(account);
+	}
+
+	//Buscar dados pelo ID com Client Amarrado na conta, apartir do relacionamento
+	//deles
+	@GetMapping("/{id}")
+	public ResponseEntity<ClientCurrentAccountResponseDTO> getClientById(@PathVariable Long id) {
+	ClientCurrentAccountResponseDTO account = currentAccountService.findAccountWithClientById(id);
+		return ResponseEntity.ok(account);
+	}
+
+	@PostMapping("/deposit/{accountId}")
+	public ResponseEntity<?> deposit(@PathVariable Long accountId,
+			@RequestBody CurrentAccountTransactionRequest request) {
+
+		CurrentAccount updateAccount = currentAccountService.deposit(accountId, request.getAmount());
+		return ResponseEntity.ok(updateAccount);
+	}
+
+	@GetMapping("/balance/{accountId}")
+	public ResponseEntity<BigDecimal> getBalance(@PathVariable long accountId) {
+		BigDecimal balance = currentAccountService.getBalance(accountId);
+		return ResponseEntity.ok(balance);
+	}
+
+}

@@ -1,0 +1,30 @@
+package com.bank.controller;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.bank.dto.ClientCurrentAccountRequestDTO;
+import com.bank.service.CurrentAccountService;
+
+@RestController
+@RequestMapping("/current-account")
+public class CurrentAccountController {
+
+	private final CurrentAccountService currentAccountService;
+
+	public CurrentAccountController(CurrentAccountService currentAccountService) {
+
+		this.currentAccountService = currentAccountService;
+	}
+
+	@PostMapping("/create")
+	public ResponseEntity<String> createAccount(@RequestBody ClientCurrentAccountRequestDTO request) {
+		currentAccountService.createAccountAsync(request);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body("Account sent for asynchronous processing via RabbitMQ");
+	}
+
+}

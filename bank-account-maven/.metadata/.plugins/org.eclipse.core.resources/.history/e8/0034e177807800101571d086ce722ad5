@@ -1,0 +1,13 @@
+package com.bank.messasing;
+
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+
+public class CurrentAccountProducer {
+	
+	private final RabbitTemplate rabbittemplate;
+	
+	public CurrentAccountProducer(RabbitTemplate rabbittemplate) {
+		this.rabbittemplate = rabbittemplate;
+	}
+
+}

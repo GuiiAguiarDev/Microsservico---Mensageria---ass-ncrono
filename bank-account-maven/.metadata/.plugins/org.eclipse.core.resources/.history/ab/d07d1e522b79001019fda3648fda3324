@@ -1,0 +1,35 @@
+# Nao aceita acentos nos comentarios
+
+# H2 Database Config
+server.port=8081
+spring.datasource.url=jdbc:h2:mem:banksystemdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+
+# JPA / Hibernate
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+# H2 Console
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+
+
+# Host do RabbitMQ
+spring.rabbitmq.host=gorilla.lmq.cloudamqp.com
+
+# Porta (TLS/SSL usa 5671)
+spring.rabbitmq.port=5671
+
+# Usuário = também é o Virtual Host no seu caso
+spring.rabbitmq.username=abdchoir
+spring.rabbitmq.password=D5Kn7fau_uKtP64c4U2IMEa7PZ2owtKX
+
+# Virtual host
+spring.rabbitmq.virtual-host=abdchoir
+
+# Como a URL começa com amqps:// -> precisa habilitar SSL
+spring.rabbitmq.ssl.enabled=true
+

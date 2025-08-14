@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
+    <fullyQualifiedTypeName name="java.util.Queue"/>
+    <fullyQualifiedTypeName name="org.springframework.amqp.rabbit.annotation.Queue"/>
+    <fullyQualifiedTypeName name="com.rabbitmq.client.AMQP.Queue"/>
+    <fullyQualifiedTypeName name="org.springframework.amqp.core.Queue"/>
+    <fullyQualifiedTypeName name="org.springframework.amqp.rabbit.core.RabbitTemplate"/>
+    <fullyQualifiedTypeName name="com.bank.config.RabbitMQConfig"/>
+    <fullyQualifiedTypeName name="com.bank.messasing.CurrentAccountProducer"/>
+    <fullyQualifiedTypeName name="com.bank.repository.CurrentAccountRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.amqp.rabbit.annotation.RabbitListener"/>
+    <fullyQualifiedTypeName name="com.bank.model.CurrentAccount"/>
+    <fullyQualifiedTypeName name="com.bank.service.CurrentAccountService"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
+    <fullyQualifiedTypeName name="com.bank.dto.ClientCurrentAccountRequestDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
+    <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="com.bank.messaging.TesteProducer"/>
+    <fullyQualifiedTypeName name="com.bank.messasing.TesteProducer"/>
+    <fullyQualifiedTypeName name="com.bank.teste"/>
+    <fullyQualifiedTypeName name="com.rabbitmq.client.ConnectionFactory"/>
+    <fullyQualifiedTypeName name="jakarta.annotation.PostConstruct"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+</qualifiedTypeNameHistroy>

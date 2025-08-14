@@ -1,0 +1,37 @@
+# Nao aceita acentos nos comentarios
+
+# H2 Database Config
+server.port=8081
+spring.datasource.url=jdbc:h2:mem:banksystemdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+
+# JPA / Hibernate
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+# H2 Console
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+
+
+# -------------------------
+# RabbitMQ CloudAMQP - nova instância
+# -------------------------
+spring.rabbitmq.host=gorilla.lmq.cloudamqp.com
+spring.rabbitmq.port=5671
+spring.rabbitmq.ssl.enabled=true
+spring.rabbitmq.username=abdchoir
+spring.rabbitmq.password=D5Kn7fau_uKtP64c4U2IMEa7PZ2owtKX
+spring.rabbitmq.virtual-host=abdchoir
+
+
+# -------------------------
+# Outras configurações (opcional)
+# -------------------------
+spring.jpa.open-in-view=true
+
+
+

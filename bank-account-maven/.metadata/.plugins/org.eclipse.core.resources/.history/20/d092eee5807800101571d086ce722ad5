@@ -1,0 +1,10 @@
+package com.bank.messasing;
+
+import com.bank.repository.CurrentAccountRepository;
+
+public class CurrentAccountConsumer {
+	
+	private final CurrentAccountRepository accountRepository;
+	
+	
+}

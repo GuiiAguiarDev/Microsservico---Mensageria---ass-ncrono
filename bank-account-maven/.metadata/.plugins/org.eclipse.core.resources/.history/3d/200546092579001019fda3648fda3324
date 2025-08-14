@@ -1,0 +1,16 @@
+package com.bank;
+
+public class teste {
+	@Autowired
+	private ConnectionFactory connectionFactory;
+
+	@PostConstruct
+	public void testConnection() throws Exception {
+	    try (Connection conn = connectionFactory.createConnection()) {
+	        System.out.println("Conexão RabbitMQ OK!");
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}
+
+}

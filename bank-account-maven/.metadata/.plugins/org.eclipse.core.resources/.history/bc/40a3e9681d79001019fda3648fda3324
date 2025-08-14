@@ -1,0 +1,34 @@
+# Nao aceita acentos nos comentarios
+
+# H2 Database Config
+server.port=8081
+spring.datasource.url=jdbc:h2:mem:banksystemdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+
+# JPA / Hibernate
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+# H2 Console
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+
+
+# RabbitMQ CloudAMQP online com TLS
+spring.rabbitmq.addresses=amqps://piorjszd:kaOMhj2z_t00MkTWqVuk5zjJXCQmaVkK@leopard.lmq.cloudamqp.com:5671/piorjszd
+spring.rabbitmq.username=piorjszd
+spring.rabbitmq.password=kaOMhj2z_t00MkTWqVuk5zjJXCQmaVkK
+spring.rabbitmq.virtual-host=piorjszd
+spring.rabbitmq.ssl.enabled=true
+
+# Listener
+spring.rabbitmq.listener.simple.acknowledge-mode=auto
+spring.rabbitmq.listener.simple.concurrency=1
+spring.rabbitmq.listener.simple.max-concurrency=1
+
+
+
+
