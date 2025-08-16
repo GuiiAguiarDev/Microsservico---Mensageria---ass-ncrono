@@ -1,2 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="org.springframework.amqp.rabbit.listener.QueuesNotAvailableException"/>
+    <fullyQualifiedTypeName name="java.awt.List"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.rabbitmq.client.observation.micrometer.RabbitMqObservationDocumentation"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+    <fullyQualifiedTypeName name="java.lang.Long"/>
+    <fullyQualifiedTypeName name="org.springframework.amqp.rabbit.annotation.RabbitListener"/>
+    <fullyQualifiedTypeName name="com.bank.config.RabbitMQConfig"/>
+    <fullyQualifiedTypeName name="com.bank.model.Client"/>
+    <fullyQualifiedTypeName name="com.bank.exception.ResourceNotFoundException"/>
+    <fullyQualifiedTypeName name="com.bank.repository.ClientRepository"/>
+    <fullyQualifiedTypeName name="com.bank.messasing.ClientProducer"/>
+    <fullyQualifiedTypeName name="com.bank.dto.ClientRequestDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
+</qualifiedTypeNameHistroy>

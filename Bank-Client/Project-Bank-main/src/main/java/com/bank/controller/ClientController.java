@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bank.dto.ClientRequestDTO;
 import com.bank.model.Client;
 
 import com.bank.service.ClientService;
@@ -30,9 +31,10 @@ public class ClientController {
 		this.clientService = clientService;
 	}
 
-	@PostMapping
-	public Client save(@Valid @RequestBody Client client) {
-		return clientService.save(client);
+	@PostMapping("/save")
+	public ResponseEntity<String> save(@RequestBody ClientRequestDTO dto) {
+		clientService.save(dto);
+		return ResponseEntity.ok("Client sent to queue");
 	}
 
 	@GetMapping
@@ -47,14 +49,18 @@ public class ClientController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Client> clientUpdate(@PathVariable Long id, @RequestBody Client updatedClient) {
-		Client client = clientService.updateClient(id, updatedClient);
-		return ResponseEntity.ok(client);
+	public ResponseEntity<String> update(@PathVariable Long id, @RequestBody ClientRequestDTO dto) {
+		dto.setId(id);
+		clientService.updateClient(dto);
+		return ResponseEntity.ok("Update sent to queue");
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deleteClient(@PathVariable Long id) {
-		clientService.deleteClient(id);
-		return ResponseEntity.noContent().build();
+	public ResponseEntity<String> delete(@PathVariable Long id) {
+		ClientRequestDTO dto = new ClientRequestDTO();
+		dto.setId(id);
+		clientService.delete(dto);
+		return ResponseEntity.ok("Delete sento to queue");
 	}
+
 }

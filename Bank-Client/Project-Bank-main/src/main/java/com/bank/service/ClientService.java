@@ -4,60 +4,52 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.bank.dto.ClientRequestDTO;
 import com.bank.exception.ResourceNotFoundException;
+import com.bank.messasing.ClientProducer;
 import com.bank.model.Client;
 import com.bank.repository.ClientRepository;
 
 @Service
 public class ClientService {
 
+	private final ClientProducer clientProducer;
 	private final ClientRepository clientRepository;
 
-
-	public ClientService(ClientRepository clientRepository) {
+	public ClientService(ClientRepository clientRepository, ClientProducer clientProducer) {
+		this.clientProducer = clientProducer;
 		this.clientRepository = clientRepository;
-	
 	}
 
-	public Client save(Client client) {
-		return clientRepository.save(client);
-
+	// Salvar - Rabbit
+	public void save(ClientRequestDTO dto) {
+		clientProducer.save(dto);
 	}
+
+	// Não passa pelo rabbit
 
 	public List<Client> list() {
 		return clientRepository.findAll();
 
 	}
 
+	// Não passa pelo rabbit
 	public Client findById(Long id) {
 		return clientRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Client not found with id: " + id));
 
 	}
 
-	public Client updateClient(Long id, Client updatedClient) {
-		Client existingUser = clientRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Invalid update - Client not found with id: " + id));
+	// Update - Rabbit
 
+	public void updateClient(ClientRequestDTO dto) {
 
-		existingUser.setName(updatedClient.getName());
-		existingUser.setAge(updatedClient.getAge());
-		existingUser.setEmail(updatedClient.getEmail());
-		existingUser.setAddress(updatedClient.getAddress());
-		existingUser.setSalary(updatedClient.getSalary());
-
-		
-
-		return clientRepository.save(existingUser);
-
+		clientProducer.update(dto);
 	}
 
-	public void deleteClient(Long id) {
-
-		Client client = clientRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Invalid delete - Client not found with id: " + id));
-
-		clientRepository.delete(client);
-
+	public void delete(ClientRequestDTO dto) {
+		clientProducer.delete(dto);
 	}
+
+	
 }
