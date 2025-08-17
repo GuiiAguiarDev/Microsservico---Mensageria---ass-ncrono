@@ -1,0 +1,16 @@
+Questão do ClientId para cadastrar o CurrentAccount, é a mesma coisa que foi citada na comunicação do WebClient, não muda nada. Então na questão das Dtos, a mesma coisa que é para o a comunicação WebClient é para a mensageria.
+
+Uma questão que muda aqui é que aqui muda o conceito da estrutura, aqui tudo é feito na consumert ou seja webClient ou outros projetos é do repositor para servisse para controler, aqui o fluxo principal é a consumer ou seja ficando assim, repositor, consumer, servisse e controle,
+porem o save do repositor ocorre na consumer, assim a servisse só chama o que vem da consumer assim como o controler chama oq vem da servisse, então o fluxo principal é a nossa consumer.
+
+Quando criamos a classe RabbitMQConfig no pacote config, podemos criar uma constante variável com nome da fila para cada método que queremos
+por exemplo save, delete, update ou algum outro que criamos porem isso é mais usado em projetos maiores em projetos menores o comum é ter uma fila pro entidade, mas vamos fazer das duas maneiras para ter como exemplo o cliente vai ficar uma fila para cada método e no current apenas um para tudo. Lembrando que se crio uma constante para fila tenho que criar um método para cada tbm passando o @bean e em cima na classe principal não esquecer da configuration.
+
+Na classe de ConfigRebbitMQ - Vamos ter dois métodos, um que vai criar o conversor que vai ser com o jsckson, que vai fazer essa função, acima dele vamos colcoar o @bean e outro metodo que vai ter a função de enviar os dados convertidos para o rebbitMQ.
+
+
+Tratamentos de erros de loopInfinity no update e delete - na nossa configuração do rabbitMQ no pacote config criamos as constantes com nome das DLQ que é a fila de descarte para onde vai quando temos erros, é exatamente igual quando criamos uma fila normal
+criamos a constante e depois o método que vai criar a fila com @bean.
+Depois de configurar ela na RabbitMQ vamos pegar e editar ela na consumer, criando a condição se existe ou não, se existir o id tanto para update e delete manda para fila normal se não manda para a fila de descarte DLQ, lembrando que temos que tratar para cada método cada um, falei junto aqui mas é separado lá, aqui na nossa consumer vamos usar o rebitTemplate tbm para enviar as mensagens para o rabbit, pois se cair na condição de não existir temos que usar ele para mandar então vamos injetar ele aqui tbm e não so o repository e o RabbitListening.
+Depois 
+Ponto importante as mensagens são apenas no sistema onde codamos no projeto mesmo e no rabbitMq em messages que ainda lá não mostra especifico só que teve uma mensagem de tratamento, eu até posso inserir mensagem na servise e chamando na controler, para mostrar no postman mas só para teste, porque o fluxo final fazendo por mesageria é servisse controller no so final na consumer, então ela passa pela controler e service e ainda não salvou ent não tem como ter mensagem lá porque não faz sentido.
