@@ -24,7 +24,7 @@ public class CurrentAccountController {
 	@PostMapping("/create")
 	public ResponseEntity<String> createAccount(@RequestBody ClientCurrentAccountRequestDTO request) {
 		currentAccountService.createAccountAsync(request);
-		return ResponseEntity.status(HttpStatus.ACCEPTED).body("Account sent for asynchronous processing via RabbitMQ");
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body("Account sent to RabbitMQ Queue - Sucess!");
 	}
 
 }

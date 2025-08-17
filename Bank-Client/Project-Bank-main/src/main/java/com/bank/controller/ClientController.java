@@ -52,7 +52,7 @@ public class ClientController {
 	public ResponseEntity<String> update(@PathVariable Long id, @RequestBody ClientRequestDTO dto) {
 		dto.setId(id);
 		clientService.updateClient(dto);
-		return ResponseEntity.ok("Update sent to queue");
+		return ResponseEntity.ok("Sent to Queue");
 	}
 
 	@DeleteMapping("/{id}")
@@ -60,7 +60,7 @@ public class ClientController {
 		ClientRequestDTO dto = new ClientRequestDTO();
 		dto.setId(id);
 		clientService.delete(dto);
-		return ResponseEntity.ok("Delete sento to queue");
+		return ResponseEntity.ok("Sent to Queue");
 	}
 
 }

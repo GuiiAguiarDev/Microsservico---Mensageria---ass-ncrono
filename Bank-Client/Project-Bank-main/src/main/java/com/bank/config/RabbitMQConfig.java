@@ -11,11 +11,14 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfig {
+	
+	//Criação das constante com o nome das filas
 	public static final String QUEUE_CLIENT_SAVE = "client-queue-save";
 
 	public static final String QUEUE_CLIENT_UPDATE = "client-queue-update";
 	
 	public static final String QUEUE_CLIENT_DELETE = "client-queue-delete";
+	
 	@Bean
 	public Queue clientQueueSave() {
 		return new Queue(QUEUE_CLIENT_SAVE, true);
@@ -33,6 +36,22 @@ public class RabbitMQConfig {
 		return new Queue(QUEUE_CLIENT_DELETE, true);
 
 	}
+	
+	
+	//Criação das constante com o nome das filas de descarte de possiveis erros
+	public static final String DLQ_CLIENT_DELETE = "client-dql-delete";
+	public static final String DLQ_CLIENT_UPDATE = "client-dql-update";
+	
+	@Bean
+	public Queue clientDLQDDelete() {
+		return new Queue(DLQ_CLIENT_DELETE, true);
+	}
+	
+	@Bean
+	public Queue clientDLQUpdate() {
+		return new Queue(DLQ_CLIENT_UPDATE,true);
+	}
+
 	
 	//Conversão para Json para funcionar nas requisições com a mensageria
 	@Bean

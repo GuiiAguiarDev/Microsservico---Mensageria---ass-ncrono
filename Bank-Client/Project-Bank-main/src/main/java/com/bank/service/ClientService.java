@@ -43,13 +43,16 @@ public class ClientService {
 	// Update - Rabbit
 
 	public void updateClient(ClientRequestDTO dto) {
-
 		clientProducer.update(dto);
+		
 	}
+
+	// Delete - Rabbit
 
 	public void delete(ClientRequestDTO dto) {
 		clientProducer.delete(dto);
+
+		
 	}
 
-	
 }

@@ -33,7 +33,7 @@ public class Client {
 	private BigDecimal salary;
 
 	public Client() {
-		super();
+	
 	}
 
 	public Client(Long id, String name, Integer age, String address, String email, BigDecimal salary) {

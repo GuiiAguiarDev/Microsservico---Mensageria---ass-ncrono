@@ -25,7 +25,6 @@ public class CurrentAccountConsumer {
 		account.setBalance(request.getBalance());
 		account.setCreateDate(request.getCreateDate());
 		account.setClientId(request.getClientId());
-		
 		accountRepository.save(account);
 		System.out.println("Current Account Created!");
 	}
